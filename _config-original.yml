@@ -1,0 +1,14 @@
+title: "Verena Thackeray"
+email: "your-email@example.com"
+description: "Art and movement coaching by Verena Thackeray."
+baseurl: ""
+url: "https://verenathackeray.com"
+twitter_username: username
+github_username: username
+
+# Build settings
+remote_theme: "mmistakes/minimal-mistakes@4.24.0"
+plugins:
+  - jekyll-feed
+  - jekyll-include-cache
+  - jekyll-remote-theme
