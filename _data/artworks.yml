@@ -1,0 +1,59 @@
+- title: "Elephant"
+  orientation: portrait
+  size: "120x80cm"
+  dominant_color: "#4a7d8e"
+  mood: meditative
+  theme: nature
+  audio: "/assets/audio/transcendence.mp3"
+  video: ""
+  price: 2400
+  tags: [abstract, featured]
+  cross_sections: [thoughts/mindfulness]
+- title: "Cheetah"
+  orientation: landscape
+  size: "150x100cm"
+  dominant_color: "#c2b280"
+  mood: energetic
+  theme: cityscapes
+  audio: ""
+  video: "/assets/video/urban-flow.mp4"
+  price: 3200
+  tags: [urban, featured]
+  cross_sections: [citylife/movement]
+- title: "Pelicans"
+  orientation: square
+  size: "100x100cm"
+  dominant_color: "#90ee90"
+  mood: calm
+  theme: nature
+  audio: ""
+  video: ""
+  price: 1800
+  tags: [abstract, nature]
+  cross_sections: [landscapes/calm]
+- title: "Elephant"
+  orientation: landscape
+  size: "160x90cm"
+  dominant_color: "#222222"
+  mood: "dark"
+  theme: "space"
+  audio: ""
+  video: ""
+  price: 4500
+  tags: [abstract, space, featured]
+  cross_sections: []
+- title: "Movement Workshop"
+  orientation: square
+  size: ""
+  dominant_color: "#f0dc82"
+  mood: "inspiring"
+  theme: "event"
+  audio: ""
+  video: ""
+  price: 0
+  tags: [event, workshop]
+  cross_sections: []
+  event_date: "2025-03-15"
+  event_time: "14:00"
+  event_location: "Verena's Studio"
+  event_description: "Join Verena for a movement workshop exploring the connection between body and art."

@@ -1,0 +1,94 @@
+---
+layout: default
+title: "Art Gallery"
+permalink: /art/
+---
+
+{% if site.css_dir %}
+  {% capture css_dir %}{{ site.css_dir }}{% endcapture %}
+{% else %}
+  {% capture css_dir %}{{ '/assets/css' | relative_url }}{% endcapture %}
+{% endif %}
+
+<link rel="stylesheet" href="{{ '/assets/css/art.css' | relative_url }}">
+
+<div class="art-gallery">
+  <div class="art-grid">
+    {% assign artworks = site.data.artworks | sort: 'title' %}
+    {% for artwork in artworks %}
+      <div class="art-item {% if artwork.orientation %}art-item--{{ artwork.orientation }}{% endif %}" style="--dominant-color: {{ artwork.dominant_color }}">
+        {% if artwork.theme == "event" %}
+          <div class="art-item__content art-item__content--event">
+            <div class="art-item__event-icon">📅</div>
+            <h3 class="art-item__title">{{ artwork.title }}</h3>
+            <div class="art-item__event-details">
+              <time datetime="{{ artwork.event_date }}T{{ artwork.event_time }}">
+                {{ artwork.event_date | date: "%B %d, %Y" }} at {{ artwork.event_time }}
+              </time>
+              <address>{{ artwork.event_location }}</address>
+            </div>
+            <div class="art-item__overlay">
+              <p class="art-item__description">{{ artwork.event_description }}</p>
+              <div class="art-item__buttons">
+                <button class="btn btn--more">More</button>
+                {% if artwork.price > 0 %}
+                  <button class="btn btn--buy">Buy Tickets</button>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% else %}
+          <div class="art-item__content">
+            {% if artwork.video != "" %}
+              <div class="art-item__media-icon">🎬</div>
+            {% elsif artwork.audio != "" %}
+              <div class="art-item__media-icon">🎵</div>
+            {% endif %}
+            
+            <img 
+              class="art-item__image lazy" 
+              src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+              data-src="/assets/images/{{ artwork.title | slugify }}.jpg"
+              alt="{{ artwork.title }}"
+              width="100%"
+              height="100%"
+            >
+            
+            <div class="art-item__overlay">
+              <h3 class="art-item__title">{{ artwork.title }}</h3>
+              {% if artwork.size != "" %}
+                <p class="art-item__size">{{ artwork.size }}</p>
+              {% endif %}
+              <p class="art-item__mood">{{ artwork.mood | capitalize }}</p>
+              
+              <div class="art-item__buttons">
+                <button class="btn btn--more">More</button>
+                {% if artwork.price > 0 %}
+                  <button class="btn btn--buy">Buy {{ artwork.price | money }}</button>
+                {% endif %}
+              </div>
+
+              {% if artwork.video != "" %}
+                <button class="btn btn--play" data-video="{{ artwork.video }}">Play Video</button>
+              {% endif %}
+              {% if artwork.audio != "" %}
+                <button class="btn btn--play" data-audio="{{ artwork.audio }}">Play Audio</button>
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- Media player modal -->
+<div class="media-modal" style="display: none;">
+  <div class="media-modal__content">
+    <button class="media-modal__close">&times;</button>
+    <div class="media-modal__player"></div>
+  </div>
+</div>
+
+<!-- Lazy loading and media player scripts -->
+<script defer src="{{ '/assets/js/custom/art-river.js' | relative_url }}"></script>
